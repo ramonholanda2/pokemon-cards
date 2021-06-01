@@ -35,13 +35,14 @@ const Cards = ({ fetchPoke }) => {
 
   useEffect(() => {
     concatDataPoke(fetchPoke);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchPoke]);
 
   return (
     <>
       {fetchPoke.length !== undefined ? (
         <div className={styles.cards}>
-          {getDataPoke.map((pokemon) => (
+        {getDataPoke.map((pokemon, index) => (
             <div key={pokemon.id} className={styles.card}>
               <img src={pokemon.sprites.front_default} alt={pokemon.name} />
 
@@ -50,8 +51,8 @@ const Cards = ({ fetchPoke }) => {
                 <div>
                   <h2>{`Nº ${pokemon.id}`}</h2>
                   <span>Type(s):</span>
-                  {pokemon.types.map((types) => (
-                    <span> {types.type.name} </span>
+                  {pokemon.types.map((types, index) => (
+                    <span key={index} > {types.type.name} </span>
                   ))}
                 </div>
               </div>

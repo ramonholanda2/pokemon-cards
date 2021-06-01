@@ -11,8 +11,8 @@ const PokemonDetails = ({ pokemonData}) => {
                         <h4>Weight: {pokemonData.weight / 10}kg</h4>
                         <h4>Height: {pokemonData.height / 10}m</h4>
                         <span>Type(s):</span>
-                            {pokemonData.types.map(types => (
-                            <span> {types.type.name} </span>
+                            {pokemonData.types.map((types, index) => (
+                            <span key={index}> {types.type.name} </span>
                         ))}
                     </div>
                     <div>
@@ -22,8 +22,8 @@ const PokemonDetails = ({ pokemonData}) => {
                 <div className={styles.skills}>
                     <br/>
                     <span>Skills:</span>
-                    {pokemonData.moves.map((skill) => (
-                        <span> {skill.move.name} </span>
+                    {pokemonData.moves.map((skill, index) => (
+                        <span key={index}> {skill.move.name} </span>
                     ))}
                 </div>
 

@@ -9,6 +9,9 @@ const App = () => {
   const [fetchPokeUpdateListNext, setFetchPokeUpdateListNext] = useState(9);
   const [fetchPokeUpdateListBack, setFetchPokeUpdateListBack] = useState(0);
 
+  document.addEventListener('kepress', e => {
+    if(e.witch === 13) searchPokemon();
+  })
 
   const fetchedPoke = async () => {
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=9`);
@@ -19,7 +22,7 @@ const App = () => {
   const searchPokemon = async() => {
     const valuePokemon = document.querySelector('.searchPokemon input');
     
-    if(valuePokemon.value!='') {
+    if(valuePokemon.value !== '') {
       const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${valuePokemon.value}`);
   
       setFetchPoke(data);
@@ -58,14 +61,11 @@ const App = () => {
   useEffect(() => {
     fetchedPoke();
   }, []);
-  useEffect(() => {
-
-  }, [])
 
   return (
     <>
       <div className='searchPokemon'>
-        <button onClick={() => returnHome()} >Home</button>
+        <button onClick={() => returnHome()}>Home</button>
         <input type="text"/>
         <button onClick={() => searchPokemon()}>Search</button>
       </div>

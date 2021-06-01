@@ -95,7 +95,7 @@
 }
 
 .btnClose {
-    position: absolute;
+    position: fixed;
     top: 2rem;
     right: 2.2rem;
 
